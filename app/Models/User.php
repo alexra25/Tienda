@@ -49,4 +49,7 @@ class User extends Authenticatable
     public function productosCarrito(){
         return $this->hasMany(Cart::class,'user_id','id');
     }
+    public function pedidos(){
+        return $this->hasMany(Pedido::class,'user_id','id');
+    }
 }

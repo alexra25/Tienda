@@ -5,21 +5,9 @@
     <div class="container-fluid">
         <section class="container">
             <div class="row">
-                <div class="col-12" style="margin-bottom: 30px">
-                    <form action="{{route('juegos.buscar',)}}" method="post">
-                        @csrf
-                        <input type="hidden" name="tipoJuego" value="{{$juegosF}}">
-                        <input class="form-control" type="search" placeholder="Buscar juego..." name="patronbusqueda">
-                            <button class="btn btn-primary" type="submit">Buscar</button>
-                    </form>
-                </div>
+
                 <div class="col-12">
-                    <h1>@if($juegosF)
-                            Juegos Fisicos
-                        @else
-                            Juegos Digitales
-                        @endif
-                    </h1>
+
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
@@ -33,33 +21,35 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($juegos as $juego)
+                        @foreach($carrito as $juego)
                             <tr>
-                                <th scope="row">{{$juego->id}}</th>
-                                <td>{{$juego->titulo}}</td>
-                                <td>{{$juego->genero}}</td>
-                                <td>{{$juego->descuento}}%</td>
+                                <th scope="row">{{$juego->juego->id}}</th>
+                                <td>{{$juego->juego->titulo}}</td>
+                                <td>{{$juego->juego->genero}}</td>
+                                <td>{{$juego->juego->descuento}}%</td>
                                 <td>
-                                    <img src="{{$juego->imagen_path}}" style="width: 40px;height: 40px">
+                                    <img src="{{$juego->juego->imagen_path}}" style="width: 40px;height: 40px">
                                 </td>
                                 <td>
-                                    @if($juego->juego_digital==0)
-                                        <p>{{$juego->stock}} uds.</p>
+                                    @if($juego->juego->juego_digital==0)
+                                        <p>{{$juego->juego->stock}} uds.</p>
                                     @else
                                         <p>-</p>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('juegos.detalle',$juego->id)}}" class="btn btn-success">Ver</a>
+                                    <a href="{{route('juegos.detalle',$juego->juego->id)}}" class="btn btn-success">Ver</a>
                                 </td>
                             </tr>
                         @endforeach
-
-
                         </tbody>
                     </table>
 
 
+                </div>
+
+                <div class="col-12">
+                    <a href="{{route('pay.cart')}}" style="color: white;background: blue" class="btn btn-primary">Pagar ({{$precioTotal}}€)</a>
                 </div>
             </div>
         </section>

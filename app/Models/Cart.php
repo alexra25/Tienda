@@ -15,4 +15,8 @@ class Cart extends Model
             'user_id'
     ];
 
+    public function juego(){
+        return $this->belongsTo(Juego::class,'juego_id','id');
+    }
+
 }

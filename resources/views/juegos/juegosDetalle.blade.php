@@ -38,6 +38,9 @@
                 },
                 success: function (data) {
                    toastr.success('Producto añadido al carrito')
+                    console.log(data)
+                    document.getElementById('elemsCart').innerText =  data.count;
+
 
                 }
             });

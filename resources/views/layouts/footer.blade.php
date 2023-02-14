@@ -1,4 +1,4 @@
-<div class="footer bg-light" style="position: absolute;bottom: 0;width: 100%;">
+<div class="footer bg-light" style="position: relative;bottom: 0;width: 100%;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
